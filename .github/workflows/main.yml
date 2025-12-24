@@ -1,8 +1,23 @@
-name: CI-GCP
+name: Python CI/CD with Makefile
+
 on: [push]
+
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: "Google Cloud Deploy"
-        run: echo "Deploying to Google Cloud"
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: make install  
+
+      - name: Lint Code
+        run: make lint    
+
+      - name: Run Tests
+        run: make test    
