@@ -1,0 +1,8 @@
+name: CI-GCP
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Google Cloud Deploy"
+        run: echo "Deploying to Google Cloud"
